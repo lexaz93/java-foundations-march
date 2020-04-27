@@ -1,0 +1,4 @@
+# Project exclude paths
+/target/
+/.idea/
+/java-foundations-march.iml
