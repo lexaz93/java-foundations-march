@@ -23,7 +23,7 @@ public class HomeWork_29_04_20 {
         tri.printPerimeter();
         tri.printArea();
 
-        Figure rec = new Rectangles(5, 7);
+        Figure rec = new Rectangle(5, 7);
         rec.printType();
         rec.printPerimeter();
         rec.printArea();

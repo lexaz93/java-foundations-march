@@ -17,4 +17,9 @@ public class Triangle extends Figure {
     public void printType() {
         System.out.println("Треугольник");
     }
+
+    @Override
+    public void printPerimeter() {
+        super.printPerimeter();
+    }
 }

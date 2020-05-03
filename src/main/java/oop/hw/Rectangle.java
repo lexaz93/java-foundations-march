@@ -1,7 +1,7 @@
 package oop.hw;
 
-public class Rectangles extends Figure {
-    public Rectangles(double sideA, double sideB) {
+public class Rectangle extends Figure {
+    public Rectangle(double sideA, double sideB) {
         this.sideA = sideA;
         this.sideB = sideB;
     }

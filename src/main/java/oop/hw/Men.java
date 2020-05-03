@@ -8,4 +8,19 @@ public class Men extends Person {
         this.name = name;
         this.age = age;
     }
+
+    @Override
+    public void printAge() {
+        super.printAge();
+    }
+
+    @Override
+    public void printMale() {
+        super.printMale();
+    }
+
+    @Override
+    public void printName() {
+        super.printName();
+    }
 }

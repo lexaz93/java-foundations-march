@@ -12,4 +12,14 @@ public class Women extends Person {
     public void printAge() {
         System.out.println("Мне всегда 18");
     }
+
+    @Override
+    public void printName() {
+        super.printName();
+    }
+
+    @Override
+    public void printMale() {
+        super.printMale();
+    }
 }
