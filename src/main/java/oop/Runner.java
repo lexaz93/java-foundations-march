@@ -25,22 +25,25 @@ public class Runner {
         Cat bagira = new Panther();
         bagira.printSound();
 
-        Person alex = new Men();
-        alex.setAge(27);
-        alex.printAge();
-        if (alex.isMale) {
-            System.out.println("Мужик");
-        } else {
-            System.out.println("Баба");
-        }
+//        Person alex = new Men("Alex", 23);
+//        alex.printAge();
+//        alex.printMale();
+////        if (alex.isMale) {
+////            System.out.println("Мужик");
+////        } else {
+////            System.out.println("Баба");
+////        }
+//
+//        Person anna = new Women("Anna", 26);
+//        anna.printAge();
+//        anna.printMale();
+//        if (anna.isMale) {
+//            System.out.println("Мужик");
+//        } else {
+//            System.out.println("Баба");
+//        }
 
-        Person anna = new Women();
-        anna.printAge();
-        if (anna.isMale) {
-            System.out.println("Мужик");
-        } else {
-            System.out.println("Баба");
-        }
+
 
 
     }
