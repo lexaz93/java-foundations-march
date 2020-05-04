@@ -1,6 +1,8 @@
 package oop.hw;
 
 public class Square extends Figure {
+    private double sideA;
+
     public Square(double sideA) {
         this.sideA = sideA;
     }

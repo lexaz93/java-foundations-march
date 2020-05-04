@@ -1,6 +1,10 @@
 package oop.hw;
 
 public class Triangle extends Figure {
+    private double sideA;
+    private double sideB;
+    private double sideC;
+
     public Triangle(double sideA, double sideB, double sideC) {
         this.sideA = sideA;
         this.sideB = sideB;
@@ -20,6 +24,6 @@ public class Triangle extends Figure {
 
     @Override
     public void printPerimeter() {
-        super.printPerimeter();
+        System.out.println("Периметр равен " + (sideA + sideB + sideC));
     }
 }
