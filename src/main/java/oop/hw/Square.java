@@ -24,6 +24,6 @@ public class Square extends Figure {
 
     @Override
     public String toString() {
-        return "Сторона квадрата равна" + sideA;
+        return "Сторона квадрата равна " + sideA;
     }
 }

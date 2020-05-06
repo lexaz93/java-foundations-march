@@ -24,7 +24,7 @@ public class HWObject {
         Person alex = new Men("Alex", 27);
         System.out.println(alex.toString());
 
-        Figure tri = new Triangle(3,4,5);
+        Figure tri = new Triangle(3, 4, 5);
         System.out.println(tri.toString());
 
         Figure qva = new Square(7);

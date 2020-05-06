@@ -28,10 +28,10 @@ public class Contact {
         if (o == null || getClass() != o.getClass()) return false;
         Contact contact = (Contact) o;
         return age == contact.age &&
-                phoneNumber == contact.phoneNumber &&
                 brokerAccountNumber == contact.brokerAccountNumber &&
                 Objects.equals(firstName, contact.firstName) &&
-                lastName.equals(contact.lastName);
+                lastName.equals(contact.lastName) &&
+                Objects.equals(phoneNumber, contact.phoneNumber);
     }
 
     @Override
