@@ -26,4 +26,9 @@ public class Triangle extends Figure {
     public void printPerimeter() {
         System.out.println("Периметр равен " + (sideA + sideB + sideC));
     }
+
+    @Override
+    public String toString() {
+        return "Треугольник со сторонами " + sideA + ", " + sideB + ", " + sideC;
+    }
 }

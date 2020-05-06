@@ -25,4 +25,9 @@ public class Person {
             System.out.println("Девушка");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Пол " + isMale + ", Имя '" + name + '\'' + ", Возраст " + age;
+    }
 }

@@ -9,4 +9,13 @@ public class Men extends Person {
         super.age = age;
     }
 
+    public String toString() {
+        String isMale;
+        if (this.isMale) {
+            isMale = "Мужичина";
+        } else {
+            isMale = "Девушка";
+        }
+        return "Пол " + isMale + ", Имя '" + name + '\'' + ", Возраст " + age;
+    }
 }

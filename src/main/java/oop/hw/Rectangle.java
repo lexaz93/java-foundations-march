@@ -23,4 +23,9 @@ public class Rectangle extends Figure {
     public void printType() {
         System.out.println("Прямоугольник");
     }
+
+    @Override
+    public String toString() {
+        return "Стороны прямоугольника равны " + sideA + ", " + sideB;
+    }
 }
