@@ -10,4 +10,9 @@ public class Figure {
 
     public void printArea() {
     }
+
+    public String toString() {
+
+        return null;
+    }
 }

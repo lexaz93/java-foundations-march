@@ -21,4 +21,9 @@ public class Square extends Figure {
     public void printType() {
         System.out.println("Квадрат");
     }
+
+    @Override
+    public String toString() {
+        return "Сторона квадрата равна" + sideA;
+    }
 }

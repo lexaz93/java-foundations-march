@@ -13,5 +13,14 @@ public class Women extends Person {
         System.out.println("Мне всегда 18");
     }
 
+    public String toString() {
+        String isMale;
+        if (this.isMale) {
+            isMale = "Мужичина";
+        } else {
+            isMale = "Девушка";
+        }
+        return "Пол " + isMale + ", Имя '" + name + '\'' + ", Возраст " + 18;
+    }
 }
 
