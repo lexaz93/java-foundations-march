@@ -1,7 +1,5 @@
 package oop.hw;
 
-import java.util.Objects;
-
 public class Circle extends Figure {
     private double radius;
 
@@ -12,7 +10,6 @@ public class Circle extends Figure {
     @Override
     public void printPerimeter() {
         System.out.println("Длина окружности равна " + 2 * PI * radius);
-        ;
     }
 
     @Override
