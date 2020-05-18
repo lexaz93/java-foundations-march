@@ -33,6 +33,5 @@ public class HomeWork_29_04_20 {
         squa.printPerimeter();
         squa.printArea();
 
-
     }
 }

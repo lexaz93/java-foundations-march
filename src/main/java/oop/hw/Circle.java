@@ -1,42 +1,40 @@
 package oop.hw;
 
-import java.util.Objects;
+public class Circle extends Figure {
+    private double radius;
 
-public class Square extends Figure {
-    private double sideA;
-
-    public Square(double sideA) {
-        this.sideA = sideA;
+    public Circle(double radius) {
+        this.radius = radius;
     }
 
     @Override
     public void printPerimeter() {
-        System.out.println("Периметр равен " + sideA * 4);
+        System.out.println("Длина окружности равна " + 2 * PI * radius);
     }
 
     @Override
     public double getPerimeter() {
-        return sideA * 4;
+        return 2 * PI * radius;
     }
 
     @Override
     public void printArea() {
-        System.out.println("Площадь равна " + sideA * sideA);
+        System.out.println("Площадь равна " + PI * radius * radius);
     }
 
     @Override
     public double getArea() {
-        return sideA * sideA;
+        return PI * radius * radius;
     }
 
     @Override
     public void printType() {
-        System.out.println("Квадрат");
+        System.out.println("Круг");
     }
 
     @Override
     public String toString() {
-        return "Сторона квадрата равна " + sideA;
+        return "Круг с радиусом " + radius;
     }
 
     @Override
@@ -44,12 +42,12 @@ public class Square extends Figure {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Square square = (Square) o;
-        return Double.compare(square.getArea(), getArea()) == 0;
+        Circle circle = (Circle) o;
+        return (circle.radius - radius) < 0.01;
     }
 
     @Override
     public int hashCode() {
-        return (int)sideA;
+        return (int) radius;
     }
 }
