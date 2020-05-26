@@ -28,15 +28,17 @@ public class HomeWorkWithStrings {
         System.out.println("str.replaceAll(\"классная\", \"ужасная\") = " + str.replaceAll("классная", "ужасная"));
 
 
-        String regexp = "@.+ru";
-        String email = "wegw@mail.ru";
+//        String regexp = "^.+@.+(ru|com)$"; Этот я тоже переделал. Для многих прокатит)
+        String regexp = "([A-Za-z0-9]{1,}[\\.-]{0,1}[A-Za-z0-9]{1,})+@([A-Za-z0-9]{1,}[\\.-]{0,1}[A-Za-z0-9]{1,})+[\\.]{1}[a-z]{2,4}";//Взял из интернета, но могу обьяснить)если что после урока)Вместо [A-Za-z0-9] можно использовать \\w
+        String email = "wegw@google.com";
 
         Pattern pattern = Pattern.compile(regexp);
         Matcher matcher = pattern.matcher(email);
         System.out.println("matcher.find() = " + matcher.find());
 
-        String regexp1 = "89.........";
-        String phoneNumber = "89210032783";
+//        String regexp1 = "89.........";
+        String regexp1 = "^(89|\\+79)\\d{9}$";
+        String phoneNumber = "+79210032783";
 
         Pattern pattern1 = Pattern.compile(regexp1);
         Matcher matcher1 = pattern1.matcher(phoneNumber);
