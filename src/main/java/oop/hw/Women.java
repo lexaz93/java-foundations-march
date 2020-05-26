@@ -7,6 +7,10 @@ public class Women extends Person {
         super.age = age;
     }
 
+    @Override
+    public int getAge() {
+        return 18;
+    }
 
     @Override
     public void printAge() {
