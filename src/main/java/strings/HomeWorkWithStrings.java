@@ -27,6 +27,10 @@ public class HomeWorkWithStrings {
         System.out.println("str.startsWith(\"Я\") = " + str.startsWith("Я"));
         System.out.println("str.replaceAll(\"классная\", \"ужасная\") = " + str.replaceAll("классная", "ужасная"));
 
+        for (String substring : str.split(" ")) {
+            System.out.println(substring);
+        }
+
 
 //        String regexp = "^.+@.+(ru|com)$"; Этот я тоже переделал. Для многих прокатит)
         String regexp = "([A-Za-z0-9]{1,}[\\.-]{0,1}[A-Za-z0-9]{1,})+@([A-Za-z0-9]{1,}[\\.-]{0,1}[A-Za-z0-9]{1,})+[\\.]{1}[a-z]{2,4}";//Взял из интернета, но могу обьяснить)если что после урока)Вместо [A-Za-z0-9] можно использовать \\w
