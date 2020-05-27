@@ -53,10 +53,8 @@ public class HW_ArrayList {
         System.out.println("mySecondList.size() = " + mySecondList.size());
 
         System.out.println("Список с элементами, индексы которых делятся на 3: ");
-        for (int i = 0; i < mySecondList.size(); i++) {
-            if (i % 3 == 0) {
-                System.out.print(mySecondList.get(i) + " ");
-            }
+        for (int i = 0; i < mySecondList.size(); i = i + 3) {
+            System.out.print(mySecondList.get(i) + " ");
         }
         System.out.println();
 
