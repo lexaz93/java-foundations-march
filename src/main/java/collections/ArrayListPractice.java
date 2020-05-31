@@ -67,6 +67,8 @@ public class ArrayListPractice {
 
         myList.set(myList.size()-1, 10);
         printList(myList);
+        myList.remove(1);
+        printList(myList);
 
 //        myList.clear();
 //        printList(myList);
