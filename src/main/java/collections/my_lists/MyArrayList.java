@@ -47,6 +47,7 @@ public class MyArrayList {
         for (int i = 0; i < size; i++) {
             if (o.equals(array[i])) {
                 System.arraycopy(array, i + 1, array, i, size - i);
+                array[size - 1] = null;
                 size--;
                 count++;
                 break;
@@ -56,6 +57,9 @@ public class MyArrayList {
     }
 
     public void clear() {
+        for (int i = 0; i < size; i++) {
+            array[i] = null;
+        }
         size = 0;
         System.out.println("MyList is cleaned");
     }
@@ -94,8 +98,8 @@ public class MyArrayList {
 
     public Object remove(int index) {
         checkIndex(index);
-        System.arraycopy(array, 0, array, 0, index);
         System.arraycopy(array, index + 1, array, index, size - index);
+        array[size - 1] = null;
         size--;
         return array;
     }
