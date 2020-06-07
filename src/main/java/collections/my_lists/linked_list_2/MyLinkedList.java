@@ -1,16 +1,18 @@
-package collections.my_lists.linked_list;
+package collections.my_lists.linked_list_2;
 
 import lombok.Data;
 
 @Data
 public class MyLinkedList {
     private Node startNode;
+    private Node lastNode;
     private int size;
 
     public MyLinkedList(Object obj) {
-        startNode = new Node(obj, null);
+        startNode = lastNode = new Node(null, obj, null);
         size = 1;
     }
+
 
     public MyLinkedList() {
         size = 0;
@@ -26,36 +28,30 @@ public class MyLinkedList {
 
     public boolean contains(Object o) {
         Node cur = startNode;
-        for (int i = 0; i < size; i++) {
+        Node cur2 = lastNode;
+        for (int i = 0; i <= size / 2; i++) {
             if (o.equals(cur.getElement())) {
                 return true;
             }
             cur = cur.getNext();
+            if (o.equals(cur2.getElement())) {
+                return true;
+            }
+            cur2 = cur2.getPrevious();
         }
         return false;
     }
 
     public boolean add(Object o) {
         if (startNode == null) {
-            startNode = new Node(o, null);
+            startNode = new Node(null, o, null);
         } else {
-// 1.
-//            Node node = startNode;
-//            for (int i = 0; i < size - 1; i++) {
-//                node = node.getNext();
-//            }
-//            node.setNext(new Node(o, null));
-//2.
-//            Node cur;
-//            for (cur = startNode; cur.getNext() != null; cur = cur.getNext()) {
-//            }
-//            cur.setNext(new Node(o, null));
-//3.
             Node cur = startNode;
             while (cur.getNext() != null) {
                 cur = cur.getNext();
             }
-            cur.setNext(new Node(o, null));
+            cur.setNext(new Node(cur, o, null));
+            lastNode = cur.getNext();
 
 
         }
@@ -76,18 +72,35 @@ public class MyLinkedList {
             size--;
             return true;
         }
+        if (o.equals(lastNode.getElement())) {
+            lastNode = lastNode.getPrevious();
+            size--;
+            return true;
+        }
         if (size > 1) {
             Node prevNode = startNode;
             Node curNode = startNode.getNext();
-            for (int i = 0; i < size - 1; i++) {
+            Node nextNode = lastNode;
+            Node cur2Node = lastNode.getPrevious();
+            for (int i = 0; i < size / 2; i++) {
                 if (o.equals(curNode.getElement())) {
                     prevNode.setNext(curNode.getNext());
                     curNode.setNext(null);
+                    curNode.setPrevious(null);
                     size--;
                     return true;
                 }
                 prevNode = curNode;
                 curNode = curNode.getNext();
+                if (o.equals(cur2Node.getElement())) {
+                    nextNode.setPrevious(cur2Node.getPrevious());
+                    cur2Node.setNext(null);
+                    cur2Node.setPrevious(null);
+                    size--;
+                    return true;
+                }
+                nextNode = cur2Node;
+                cur2Node = cur2Node.getPrevious();
             }
         }
         return false;
@@ -96,10 +109,15 @@ public class MyLinkedList {
     public void clear() {
         Node prevNode = startNode;
         Node curNode = startNode.getNext();
-        for (int i = 0; i < size - 1; i++) {
+        Node nextNode = lastNode;
+        Node cur2Node = lastNode.getPrevious();
+        for (int i = 0; i <= size / 2; i++) {
             prevNode.setNext(null);
             prevNode = curNode;
             curNode = curNode.getNext();
+            nextNode.setPrevious(null);
+            nextNode = cur2Node;
+            cur2Node = cur2Node.getPrevious();
 
         }
         size = 0;
@@ -109,10 +127,18 @@ public class MyLinkedList {
     public Object get(int index) {
         checkIndex(index);
         Node curNode = startNode;
-        for (int i = 0; i < index; i++) {
-            curNode = curNode.getNext();
+        Node cur2Node = lastNode;
+        if (index <= size / 2) {
+            for (int i = 0; i < index; i++) {
+                curNode = curNode.getNext();
+            }
+            return curNode.getElement();
+        } else {
+            for (int i = size - 1; i > index; i--) {
+                cur2Node = cur2Node.getPrevious();
+            }
+            return cur2Node.getElement();
         }
-        return curNode.getElement();
     }
 
     private void checkIndex(int index) {
@@ -125,41 +151,67 @@ public class MyLinkedList {
     public Object set(int index, Object element) {
         checkIndex(index);
         Node curNode = startNode;
-        for (int i = 0; i < index; i++) {
-            curNode = curNode.getNext();
+        Node cur2Node = lastNode;
+        if (index <= size / 2) {
+            for (int i = 0; i < index; i++) {
+                curNode = curNode.getNext();
+            }
+            curNode.setElement(element);
+            return curNode.getElement();
+        } else {
+            for (int i = size - 1; i > index; i--) {
+                cur2Node = cur2Node.getPrevious();
+            }
+            cur2Node.setElement(element);
+            return cur2Node.getElement();
         }
-        curNode.setElement(element);
-        return curNode.getElement();
     }
 
     public void add(int index, Object element) {
         checkIndex(index);
         Node node = startNode;
-        if (index == 0) {
-            startNode = new Node(element, node);
+        Node node2 = lastNode;
+        if (index <= size / 2) {
+            if (index == 0) {
+                startNode = new Node(null, element, node);
+            }
+            for (int i = 0; i < index - 1; i++) {
+                node = node.getNext();
+            }
+            node.setNext(new Node(node, element, node.getNext()));
+        } else {
+            for (int i = size - 1; i > index - 1; i--) {
+                node2 = node2.getPrevious();
+            }
+            node2.setNext(new Node(node2, element, node2.getNext()));
         }
-        for (int i = 0; i < index - 1; i++) {
-            node = node.getNext();
-        }
-        node.setNext(new Node(element, node.getNext()));
+
+
         size++;
     }
 
-    public Object remove(int index) {
+        public Object remove(int index) {
         checkIndex(index);
-//        1.Вариант
-//        Node prevNode = startNode;
-//        Node curNode = startNode.getNext();
-//        for (int i = 0; i < index - 1; i++) {
-//            prevNode = curNode;
-//            curNode = curNode.getNext();
-//        }
-//        prevNode.setNext(curNode.getNext());
         Node node = startNode;
-        for (int i = 0; i < index - 1; i++) {
-            node = node.getNext();
+        Node node2 = lastNode;
+        if (index <= size /2) {
+            if (index== 0) {
+                startNode = startNode.getNext();
+            }
+            for (int i = 0; i < index - 1; i++) {
+                node = node.getNext();
+            }
+            node.setNext((node.getNext().getNext()));
+        } else  if(index == size -1) {
+            node2 = node2.getPrevious();
+            lastNode = new Node (node2.getPrevious(), node2.getElement(), null);
+
+        } else {
+            for (int i = size - 1; i > index; i--) {
+                node2 = node2.getPrevious();
+            }
+            node2.setNext((node2.getNext().getNext()));
         }
-        node.setNext((node.getNext().getNext()));
         size--;
         return true;
     }
@@ -176,15 +228,14 @@ public class MyLinkedList {
     }
 
     public int lastIndexOf(Object o) {
-        int count = -1;
-        Node node = startNode;
-        for (int i = 0; i < size; i++) {
+        Node node = lastNode;
+        for (int i = size-1; i >= 0; i--) {
             if (o.equals(node.getElement())) {
-                count = i;
+                return i;
             }
-            node = node.getNext();
+            node = node.getPrevious();
         }
-        return count;
+        return -1;
     }
 
     public MyLinkedList subList(int fromIndex, int toIndex) {
