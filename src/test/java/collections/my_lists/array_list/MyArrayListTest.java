@@ -1,4 +1,4 @@
-package collections.my_lists;
+package collections.my_lists.array_list;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

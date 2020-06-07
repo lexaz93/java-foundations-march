@@ -1,4 +1,4 @@
-package collections;
+package collections.my_lists.array_list;
 
 import oop.hw.Men;
 import oop.hw.Person;
