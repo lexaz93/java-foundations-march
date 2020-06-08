@@ -3,7 +3,7 @@ package collections.my_lists.linked_list_2;
 import lombok.Data;
 
 @Data
-public class MyLinkedList<Object> {
+public class MyLinkedList<T> {
     private Node startNode;
     private Node lastNode;
     private int size;
@@ -136,12 +136,12 @@ public class MyLinkedList<Object> {
             for (int i = 0; i < index; i++) {
                 curNode = curNode.getNext();
             }
-            return (Object) curNode.getElement();
+            return curNode.getElement();
         } else {
             for (int i = size - 1; i > index; i--) {
                 cur2Node = cur2Node.getPrevious();
             }
-            return (Object) cur2Node.getElement();
+            return cur2Node.getElement();
         }
     }
 
@@ -161,13 +161,13 @@ public class MyLinkedList<Object> {
                 curNode = curNode.getNext();
             }
             curNode.setElement(element);
-            return (Object) curNode.getElement();
+            return curNode.getElement();
         } else {
             for (int i = size - 1; i > index; i--) {
                 cur2Node = cur2Node.getPrevious();
             }
             cur2Node.setElement(element);
-            return (Object) cur2Node.getElement();
+            return cur2Node.getElement();
         }
     }
 
@@ -251,14 +251,14 @@ public class MyLinkedList<Object> {
         return -1;
     }
 
-    public MyLinkedList<Object> subList(int fromIndex, int toIndex) {
+    public MyLinkedList<T> subList(int fromIndex, int toIndex) {
         checkIndex(fromIndex);
         checkIndex(toIndex);
         Node node = startNode;
         for (int i = 0; i < fromIndex; i++) {
             node = node.getNext();
         }
-        MyLinkedList<Object> linkedList = new MyLinkedList<Object>((Object) node.getElement());
+        MyLinkedList<T> linkedList = new MyLinkedList<>(node.getElement());
         Node linkedListNode = linkedList.startNode;
         for (int i = 0; i < toIndex - fromIndex - 1; i++) { //последний не включаем, также как в arrayList
             linkedListNode.setNext(node.getNext());
