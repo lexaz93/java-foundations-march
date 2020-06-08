@@ -3,7 +3,7 @@ package collections.my_lists.linked_list_2;
 import lombok.Data;
 
 @Data
-public class MyLinkedList {
+public class MyLinkedList<Object> {
     private Node startNode;
     private Node lastNode;
     private int size;
@@ -66,6 +66,7 @@ public class MyLinkedList {
         if (o.equals(startNode.getElement())) {
             if (startNode.getNext() != null) {
                 startNode = startNode.getNext();
+                startNode.setPrevious(null);
             } else {
                 startNode = null;
             }
@@ -74,6 +75,7 @@ public class MyLinkedList {
         }
         if (o.equals(lastNode.getElement())) {
             lastNode = lastNode.getPrevious();
+            lastNode.setNext(null);
             size--;
             return true;
         }
@@ -87,6 +89,7 @@ public class MyLinkedList {
                     prevNode.setNext(curNode.getNext());
                     curNode.setNext(null);
                     curNode.setPrevious(null);
+                    curNode.setElement(null);
                     size--;
                     return true;
                 }
@@ -96,6 +99,7 @@ public class MyLinkedList {
                     nextNode.setPrevious(cur2Node.getPrevious());
                     cur2Node.setNext(null);
                     cur2Node.setPrevious(null);
+                    cur2Node.setElement(null);
                     size--;
                     return true;
                 }
@@ -132,12 +136,12 @@ public class MyLinkedList {
             for (int i = 0; i < index; i++) {
                 curNode = curNode.getNext();
             }
-            return curNode.getElement();
+            return (Object) curNode.getElement();
         } else {
             for (int i = size - 1; i > index; i--) {
                 cur2Node = cur2Node.getPrevious();
             }
-            return cur2Node.getElement();
+            return (Object) cur2Node.getElement();
         }
     }
 
@@ -157,13 +161,13 @@ public class MyLinkedList {
                 curNode = curNode.getNext();
             }
             curNode.setElement(element);
-            return curNode.getElement();
+            return (Object) curNode.getElement();
         } else {
             for (int i = size - 1; i > index; i--) {
                 cur2Node = cur2Node.getPrevious();
             }
             cur2Node.setElement(element);
-            return cur2Node.getElement();
+            return (Object) cur2Node.getElement();
         }
     }
 
@@ -190,27 +194,36 @@ public class MyLinkedList {
         size++;
     }
 
-        public Object remove(int index) {
+    public boolean remove(int index) {
         checkIndex(index);
         Node node = startNode;
         Node node2 = lastNode;
-        if (index <= size /2) {
-            if (index== 0) {
-                startNode = startNode.getNext();
+        if (index <= size / 2) {
+            if (index == 0) {
+                startNode.setElement(null);
+                startNode = new Node(null, node.getNext().getElement(), node.getNext().getNext());
+                startNode.setPrevious(null);
             }
             for (int i = 0; i < index - 1; i++) {
                 node = node.getNext();
             }
+            node.getNext().setElement(null);
             node.setNext((node.getNext().getNext()));
-        } else  if(index == size -1) {
+            node.getNext().setPrevious(node);
+
+        } else if (index == size - 1) {
             node2 = node2.getPrevious();
-            lastNode = new Node (node2.getPrevious(), node2.getElement(), null);
+            lastNode.setElement(null);
+            lastNode = new Node(node2.getPrevious(), node2.getElement(), null);
 
         } else {
             for (int i = size - 1; i > index; i--) {
                 node2 = node2.getPrevious();
             }
+            node2.getNext().setElement(null);
             node2.setNext((node2.getNext().getNext()));
+            node2.getNext().setPrevious(node2);
+//            node2.setNext((node2.getNext().getNext()));
         }
         size--;
         return true;
@@ -229,7 +242,7 @@ public class MyLinkedList {
 
     public int lastIndexOf(Object o) {
         Node node = lastNode;
-        for (int i = size-1; i >= 0; i--) {
+        for (int i = size - 1; i >= 0; i--) {
             if (o.equals(node.getElement())) {
                 return i;
             }
@@ -238,14 +251,14 @@ public class MyLinkedList {
         return -1;
     }
 
-    public MyLinkedList subList(int fromIndex, int toIndex) {
+    public MyLinkedList<Object> subList(int fromIndex, int toIndex) {
         checkIndex(fromIndex);
         checkIndex(toIndex);
         Node node = startNode;
         for (int i = 0; i < fromIndex; i++) {
             node = node.getNext();
         }
-        MyLinkedList linkedList = new MyLinkedList(node.getElement());
+        MyLinkedList<Object> linkedList = new MyLinkedList<Object>((Object) node.getElement());
         Node linkedListNode = linkedList.startNode;
         for (int i = 0; i < toIndex - fromIndex - 1; i++) { //последний не включаем, также как в arrayList
             linkedListNode.setNext(node.getNext());
