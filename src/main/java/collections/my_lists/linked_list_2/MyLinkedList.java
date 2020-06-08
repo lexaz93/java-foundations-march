@@ -4,12 +4,12 @@ import lombok.Data;
 
 @Data
 public class MyLinkedList<T> {
-    private Node startNode;
-    private Node lastNode;
+    private Node<T> startNode;
+    private Node<T> lastNode;
     private int size;
 
-    public MyLinkedList(Object obj) {
-        startNode = lastNode = new Node(null, obj, null);
+    public MyLinkedList(T obj) {
+        startNode = lastNode = new Node<>(null, obj, null);
         size = 1;
     }
 
@@ -26,9 +26,9 @@ public class MyLinkedList<T> {
         return size == 0;
     }
 
-    public boolean contains(Object o) {
-        Node cur = startNode;
-        Node cur2 = lastNode;
+    public boolean contains(T o) {
+        Node<T> cur = startNode;
+        Node<T> cur2 = lastNode;
         for (int i = 0; i <= size / 2; i++) {
             if (o.equals(cur.getElement())) {
                 return true;
@@ -42,15 +42,15 @@ public class MyLinkedList<T> {
         return false;
     }
 
-    public boolean add(Object o) {
+    public boolean add(T o) {
         if (startNode == null) {
-            startNode = new Node(null, o, null);
+            startNode = new Node<>(null, o, null);
         } else {
-            Node cur = startNode;
+            Node<T> cur = startNode;
             while (cur.getNext() != null) {
                 cur = cur.getNext();
             }
-            cur.setNext(new Node(cur, o, null));
+            cur.setNext(new Node<>(cur, o, null));
             lastNode = cur.getNext();
 
 
@@ -59,7 +59,7 @@ public class MyLinkedList<T> {
         return true;
     }
 
-    public boolean remove(Object o) {
+    public boolean remove(T o) {
         if (size == 0 || o == null) {
             return false;
         }
@@ -80,10 +80,10 @@ public class MyLinkedList<T> {
             return true;
         }
         if (size > 1) {
-            Node prevNode = startNode;
-            Node curNode = startNode.getNext();
-            Node nextNode = lastNode;
-            Node cur2Node = lastNode.getPrevious();
+            Node<T> prevNode = startNode;
+            Node<T> curNode = startNode.getNext();
+            Node<T> nextNode = lastNode;
+            Node<T> cur2Node = lastNode.getPrevious();
             for (int i = 0; i < size / 2; i++) {
                 if (o.equals(curNode.getElement())) {
                     prevNode.setNext(curNode.getNext());
@@ -111,10 +111,10 @@ public class MyLinkedList<T> {
     }
 
     public void clear() {
-        Node prevNode = startNode;
-        Node curNode = startNode.getNext();
-        Node nextNode = lastNode;
-        Node cur2Node = lastNode.getPrevious();
+        Node<T> prevNode = startNode;
+        Node<T> curNode = startNode.getNext();
+        Node<T> nextNode = lastNode;
+        Node<T> cur2Node = lastNode.getPrevious();
         for (int i = 0; i <= size / 2; i++) {
             prevNode.setNext(null);
             prevNode = curNode;
@@ -128,10 +128,10 @@ public class MyLinkedList<T> {
         System.out.println("MyList is cleaned");
     }
 
-    public Object get(int index) {
+    public T get(int index) {
         checkIndex(index);
-        Node curNode = startNode;
-        Node cur2Node = lastNode;
+        Node<T> curNode = startNode;
+        Node<T> cur2Node = lastNode;
         if (index <= size / 2) {
             for (int i = 0; i < index; i++) {
                 curNode = curNode.getNext();
@@ -152,10 +152,10 @@ public class MyLinkedList<T> {
         }
     }
 
-    public Object set(int index, Object element) {
+    public T set(int index, T element) {
         checkIndex(index);
-        Node curNode = startNode;
-        Node cur2Node = lastNode;
+        Node<T> curNode = startNode;
+        Node<T> cur2Node = lastNode;
         if (index <= size / 2) {
             for (int i = 0; i < index; i++) {
                 curNode = curNode.getNext();
@@ -171,23 +171,23 @@ public class MyLinkedList<T> {
         }
     }
 
-    public void add(int index, Object element) {
+    public void add(int index, T element) {
         checkIndex(index);
-        Node node = startNode;
-        Node node2 = lastNode;
+        Node<T> node = startNode;
+        Node<T> node2 = lastNode;
         if (index <= size / 2) {
             if (index == 0) {
-                startNode = new Node(null, element, node);
+                startNode = new Node<>(null, element, node);
             }
             for (int i = 0; i < index - 1; i++) {
                 node = node.getNext();
             }
-            node.setNext(new Node(node, element, node.getNext()));
+            node.setNext(new Node<>(node, element, node.getNext()));
         } else {
             for (int i = size - 1; i > index - 1; i--) {
                 node2 = node2.getPrevious();
             }
-            node2.setNext(new Node(node2, element, node2.getNext()));
+            node2.setNext(new Node<>(node2, element, node2.getNext()));
         }
 
 
@@ -196,12 +196,12 @@ public class MyLinkedList<T> {
 
     public boolean remove(int index) {
         checkIndex(index);
-        Node node = startNode;
-        Node node2 = lastNode;
+        Node<T> node = startNode;
+        Node<T> node2 = lastNode;
         if (index <= size / 2) {
             if (index == 0) {
                 startNode.setElement(null);
-                startNode = new Node(null, node.getNext().getElement(), node.getNext().getNext());
+                startNode = new Node<>(null, node.getNext().getElement(), node.getNext().getNext());
                 startNode.setPrevious(null);
             }
             for (int i = 0; i < index - 1; i++) {
@@ -214,7 +214,7 @@ public class MyLinkedList<T> {
         } else if (index == size - 1) {
             node2 = node2.getPrevious();
             lastNode.setElement(null);
-            lastNode = new Node(node2.getPrevious(), node2.getElement(), null);
+            lastNode = new Node<>(node2.getPrevious(), node2.getElement(), null);
 
         } else {
             for (int i = size - 1; i > index; i--) {
@@ -223,14 +223,13 @@ public class MyLinkedList<T> {
             node2.getNext().setElement(null);
             node2.setNext((node2.getNext().getNext()));
             node2.getNext().setPrevious(node2);
-//            node2.setNext((node2.getNext().getNext()));
         }
         size--;
         return true;
     }
 
-    public int indexOf(Object o) {
-        Node node = startNode;
+    public int indexOf(T o) {
+        Node<T> node = startNode;
         for (int i = 0; i < size; i++) {
             if (o.equals(node.getElement())) {
                 return i;
@@ -240,8 +239,8 @@ public class MyLinkedList<T> {
         return -1;
     }
 
-    public int lastIndexOf(Object o) {
-        Node node = lastNode;
+    public int lastIndexOf(T o) {
+        Node<T> node = lastNode;
         for (int i = size - 1; i >= 0; i--) {
             if (o.equals(node.getElement())) {
                 return i;
@@ -254,12 +253,12 @@ public class MyLinkedList<T> {
     public MyLinkedList<T> subList(int fromIndex, int toIndex) {
         checkIndex(fromIndex);
         checkIndex(toIndex);
-        Node node = startNode;
+        Node<T> node = startNode;
         for (int i = 0; i < fromIndex; i++) {
             node = node.getNext();
         }
         MyLinkedList<T> linkedList = new MyLinkedList<>(node.getElement());
-        Node linkedListNode = linkedList.startNode;
+        Node<T> linkedListNode = linkedList.startNode;
         for (int i = 0; i < toIndex - fromIndex - 1; i++) { //последний не включаем, также как в arrayList
             linkedListNode.setNext(node.getNext());
             linkedListNode = linkedListNode.getNext();
@@ -272,7 +271,7 @@ public class MyLinkedList<T> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("MyLinkedList { ");
-        Node curNode = startNode;
+        Node<T> curNode = startNode;
         for (int i = 0; i < size; i++) {
             sb.append(curNode.getElement()).append(' ');
             curNode = curNode.getNext();

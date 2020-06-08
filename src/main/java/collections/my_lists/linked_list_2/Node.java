@@ -5,8 +5,8 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data //setter + getter
-public class Node {
-    private Node previous;
-    private Object element;
-    private Node next;
+public class Node<T> {
+    private Node<T> previous;
+    private T element;
+    private Node<T> next;
 }
