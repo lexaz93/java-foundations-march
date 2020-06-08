@@ -2,7 +2,7 @@ package collections.my_lists.linked_list_2;
 
 public class MyLinkedListPractice {
     public static void main(String[] args) {
-        MyLinkedList linkedList = new MyLinkedList();
+        MyLinkedList<Object> linkedList = new MyLinkedList<>();
         System.out.println("linkedList.size() = " + linkedList.size());
 
         linkedList.add("Vitaliy");

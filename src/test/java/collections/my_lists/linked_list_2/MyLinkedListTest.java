@@ -3,13 +3,12 @@ package collections.my_lists.linked_list_2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Класс MyLinkedList имеет:")
 public class MyLinkedListTest {
 
-    private final MyLinkedList list = new MyLinkedList();
+    private final MyLinkedList<Object> list = new MyLinkedList<>();
 
     @Test
     @DisplayName("корректный метод add")
@@ -100,7 +99,7 @@ public class MyLinkedListTest {
         list.add("act");
         list.add("ac");
         list.add("a");
-        int i = (int) Math.random() * 10;
+        int i = (int) (Math.random() * 10);
         list.add(i,"blabla");
         assertEquals(i, list.indexOf("blabla"));
     }
@@ -177,7 +176,7 @@ public class MyLinkedListTest {
         list.add("Two");
         list.add("Three");
         list.remove("Three");
-        assertEquals(false, list.contains("Three"));
+        assertFalse(list.contains("Three"));
     }
 
     @Test
@@ -197,7 +196,7 @@ public class MyLinkedListTest {
         list.add("Two");
         list.add("Three");
         list.remove(1);
-        assertEquals(false, list.contains("Two"));
+        assertFalse(list.contains("Two"));
     }
 
     @Test
@@ -209,7 +208,7 @@ public class MyLinkedListTest {
         list.add("Four");
         list.add("Five");
         list.add("Six");
-        MyLinkedList sublist = list.subList(1, 5);
+        MyLinkedList<Object> sublist = list.subList(1, 5);
         assertEquals(4, sublist.size());
     }
 }
