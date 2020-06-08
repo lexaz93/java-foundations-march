@@ -35,5 +35,6 @@ public class Party {
         System.out.println(comparator.compare(alex, yura));
         Person alex1 = new Friends("Alexey", "Korotaev", 29);
         System.out.println(comparator.compare(alex, alex1));
+        System.out.println(comparator.compare(sergey, alex1));
     }
 }
