@@ -1,4 +1,4 @@
-package collections.my_lists;
+package collections.my_lists.linked_list_2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@DisplayName("Класс MyArrayList имеет:")
-public class MyArrayListTest {
+@DisplayName("Класс MyLinkedList имеет:")
+public class MyLinkedListTest {
 
-    private final MyArrayList list = new MyArrayList();
+    private final MyLinkedList list = new MyLinkedList();
 
     @Test
     @DisplayName("корректный метод add")
@@ -115,6 +115,7 @@ public class MyArrayListTest {
         assertEquals("Four", list.get(1));
     }
 
+
     @Test
     @DisplayName("корректный метод lastIndexOf")
     public void shoulsHaveCorrectMetodLastIndexOf() {
@@ -127,16 +128,31 @@ public class MyArrayListTest {
         assertEquals(4, list.lastIndexOf("Three"));
     }
 
+//    @Test
+//    @DisplayName("корректный метод subList")
+//    public void shoulsHaveCorrectMetodSubList() {
+//        list.add("One");
+//        list.add("Two");
+//        list.add("Three");
+//        list.add("Four");
+//        list.add("Five");
+//        list.add("Six");
+//        MyLinkedList sublist = list.subList(1,5);
+//        assertEquals(4, sublist.size());
+//    }
+
     @Test
-    @DisplayName("корректный метод subList")
-    public void shoulsHaveCorrectMetodSubList() {
-        list.add("One");
-        list.add("Two");
-        list.add("Three");
-        list.add("Four");
-        list.add("Five");
-        list.add("Six");
-        MyArrayList sublist = list.subList(1,5);
-        assertEquals(4, sublist.size());
+    @DisplayName("корректный метод add по индексу")
+    public void shouldHaveCorrectMethodAddByIndex() {
+        String element = "element";
+        String element2 = "element2";
+        String element3 = "element3";
+        list.add(element);
+        list.add(element2);
+        list.add(element2);
+        list.add(2, element3);
+        assertEquals(element3, list.get(2));
+
     }
+
 }

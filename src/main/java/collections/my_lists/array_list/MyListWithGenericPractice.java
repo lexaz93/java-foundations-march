@@ -1,4 +1,4 @@
-package collections.my_lists;
+package collections.my_lists.array_list;
 
 public class MyListWithGenericPractice  {
     public static void main(String[] args) {
