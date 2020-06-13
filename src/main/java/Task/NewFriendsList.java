@@ -3,7 +3,7 @@ package Task;
 import java.util.ArrayList;
 
 public class NewFriendsList <T>{
-     final ArrayList friends = new ArrayList();
+     private final ArrayList friends = new ArrayList();
 
     public void addFriends(T o) {
         friends.add(o);
