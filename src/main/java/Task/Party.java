@@ -55,12 +55,14 @@ public class Party {
         friends.remove(3);
         System.out.println(friends.toString());
 
-        NewFriendsList friends2 = new NewFriendsList();
+        NewFriendsList <Person> friends2 = new NewFriendsList<>();
         friends2.addFriends(masha);
         friends2.addFriends(helga);
         friends2.addFriends(alena);
         friends2.addFriends(alex);
         friends2.removeFriends(alena);
         System.out.println(friends2.friendsList());
+        System.out.println(friends2.getFriend(2));
+
     }
 }

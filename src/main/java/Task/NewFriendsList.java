@@ -2,14 +2,14 @@ package Task;
 
 import java.util.ArrayList;
 
-public class NewFriendsList {
-     ArrayList friends = new ArrayList();
+public class NewFriendsList <T>{
+     final ArrayList friends = new ArrayList();
 
-    public void addFriends(Person o) {
+    public void addFriends(T o) {
         friends.add(o);
     }
 
-    public void removeFriends(Person o) {
+    public void removeFriends(T o) {
         friends.remove(o);
     }
 
