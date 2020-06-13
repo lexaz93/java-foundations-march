@@ -2,16 +2,16 @@ package Task;
 
 public class Party {
     public static void main(String[] args) {
-        Person yura = new Friends("Yura", "Petrov", 25);
-        Person vanya = new Friends("Ivan", "Kvadratov", 31);
-        Person nikita = new Friends("Nikita", "Peretyolkin", 17);
-        Person alex = new Friends("Alexey", "Korotaev", 29);
-        Person sergey = new Friends("Sergey", "Ilyushin", 35);
-        Person anna = new Girlfriends("Anna", "Ptitsyna", 24);
-        Person zhanna = new Girlfriends("Lyuba", "bratsy, Lyuba", 17);
-        Person alena = new Girlfriends("Alena", "Hohlosyan", 18);
-        Person masha = new Girlfriends("Maria", "Merlyn", 26);
-        Person helga = new Girlfriends("Olga", "Greed", 24);
+        Person yura = new Friend("Yura", "Petrov", 25);
+        Person vanya = new Friend("Ivan", "Kvadratov", 31);
+        Person nikita = new Friend("Nikita", "Peretyolkin", 17);
+        Person alex = new Friend("Alexey", "Korotaev", 29);
+        Person sergey = new Friend("Sergey", "Ilyushin", 35);
+        Person anna = new Girlfriend("Anna", "Ptitsyna", 24);
+        Person zhanna = new Girlfriend("Lyuba", "bratsy, Lyuba", 17);
+        Person alena = new Girlfriend("Alena", "Hohlosyan", 18);
+        Person masha = new Girlfriend("Maria", "Merlyn", 26);
+        Person helga = new Girlfriend("Olga", "Greed", 24);
 
         Person[] party = new Person[]{yura, vanya, nikita, alex, sergey, anna, zhanna, alena, masha, helga};
 
@@ -33,7 +33,7 @@ public class Party {
 
         PersonComparator comparator = new PersonComparator();
         System.out.println(comparator.compare(alex, yura));
-        Person alex1 = new Friends("Alexey", "Korotaev", 29);
+        Person alex1 = new Friend("Alexey", "Korotaev", 29);
         System.out.println(comparator.compare(alex, alex1));
         System.out.println(comparator.compare(sergey, alex1));
 
@@ -54,5 +54,13 @@ public class Party {
         System.out.println(friends.toString());
         friends.remove(3);
         System.out.println(friends.toString());
+
+        NewFriendsList friends2 = new NewFriendsList();
+        friends2.addFriends(masha);
+        friends2.addFriends(helga);
+        friends2.addFriends(alena);
+        friends2.addFriends(alex);
+        friends2.removeFriends(alena);
+        System.out.println(friends2.friendsList());
     }
 }
