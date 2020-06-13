@@ -36,5 +36,23 @@ public class Party {
         Person alex1 = new Friends("Alexey", "Korotaev", 29);
         System.out.println(comparator.compare(alex, alex1));
         System.out.println(comparator.compare(sergey, alex1));
+
+        FriendsList friends = new FriendsList();
+        friends.add(yura);
+        friends.add(vanya);
+        friends.add(nikita);
+        friends.add(alex);
+        friends.add(sergey);
+        friends.add(anna);
+        friends.add(3, zhanna);
+        friends.add(alena);
+        friends.add(masha);
+        friends.add(helga);
+        System.out.println(friends.toString());
+        System.out.println("friends.contains(alex) = " + friends.contains(alex));
+        friends.remove(helga);
+        System.out.println(friends.toString());
+        friends.remove(3);
+        System.out.println(friends.toString());
     }
 }
