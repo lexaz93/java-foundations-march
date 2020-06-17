@@ -42,8 +42,9 @@ public class ExceptionsPractice {
         try {
             marussia = new Child("Marussia", -10);
         } catch (MyException e) {
-            e.printStackTrace();
-            throw new RuntimeException();
+            System.err.println(e.getMessage());
+//            e.printStackTrace();
+//            throw new RuntimeException();
         }
 
         System.out.println(marussia);
