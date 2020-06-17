@@ -7,7 +7,7 @@ public class HWExceptions {
                 throw new MyException("Моё исключение!");
             } catch (MyException e) {
                 System.err.println(e.getMessage());
-                throw new MyException(e.getMessage());
+                throw e;
             } finally {
                 System.out.println("Блок кода который выполняется в любом случае!");
             }
