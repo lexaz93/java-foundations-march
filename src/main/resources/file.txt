@@ -1,0 +1,3 @@
+Hello, first string in file!
+Hello, second string in file!
+Hello, third string in file!
