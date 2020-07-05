@@ -48,8 +48,6 @@ public class HWStreams {
         }
 
 
-
-
 //        File text1 = new File ("src/main/resources/text1.txt");
 //        try (PrintWriter printWriter = new PrintWriter(text1)) {
 //            printWriter.println("Hello, first string in file!");
