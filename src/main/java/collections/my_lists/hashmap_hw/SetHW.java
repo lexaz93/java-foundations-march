@@ -21,10 +21,11 @@ public class SetHW {
 
         Iterator<Fruits> iterator = fruits.iterator();
         System.out.println("Мои фрукты:");
-        while (iterator.hasNext()) {
-            Fruits fruit = iterator.next();
-            System.out.print(fruit.getName() + " ");
-        }
+        fruits.stream().map(Fruits::getName).forEach(System.out::println);
+//        while (iterator.hasNext()) {
+//            Fruits fruit = iterator.next();
+//            System.out.print(fruit.getName() + " ");
+//        }
         System.out.println();
 
     }
