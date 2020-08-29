@@ -1,5 +1,9 @@
 package collections.my_lists.array_list;
 
+import java.util.Arrays;
+
+import static java.util.stream.Collectors.toList;
+
 public class MyArrayList {
     private Object[] array; //скрытый массив (внутри аррайлист)
     private int size;//размер аррайлиста
@@ -22,14 +26,15 @@ public class MyArrayList {
     }
 
     public boolean contains(Object o) {
-        int count = 0;
-        for (int i = 0; i < size; i++) {
-            if (o.equals(array[i])) {
-                count++;
-                break;
-            }
-        }
-        return count != 0;
+//        int count = 0;
+//        for (int i = 0; i < size; i++) {
+//            if (o.equals(array[i])) {
+//                count++;
+//                break;
+//            }
+//        }
+//        return count != 0;
+        return Arrays.stream(array).filter(value -> value.equals(o)).count() != 0;
     }
 
     public boolean add(Object o) {
@@ -57,9 +62,10 @@ public class MyArrayList {
     }
 
     public void clear() {
-        for (int i = 0; i < size; i++) {
-            array[i] = null;
-        }
+//        for (int i = 0; i < size; i++) {
+//            array[i] = null;
+//        }
+        array = Arrays.stream(array).map(value -> value = null).toArray();
         size = 0;
         System.out.println("MyList is cleaned");
     }
@@ -113,6 +119,7 @@ public class MyArrayList {
             }
         }
         return count;
+
     }
 
     public int lastIndexOf(Object o) {
