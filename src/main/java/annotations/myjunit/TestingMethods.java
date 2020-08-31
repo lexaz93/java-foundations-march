@@ -4,6 +4,18 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 public class TestingMethods {
+    public static void testingAll(SomethingTest test) throws ClassNotFoundException {
+        final Class<?> testClazz = Class.forName("annotations.myjunit.SomethingTest");
+
+        TestingMethods.testing(testClazz, test, Before.class);
+
+        TestingMethods.testingGeneral(testClazz, test);
+
+        TestingMethods.testing(testClazz, test, After.class);
+
+        TestingMethods.displayNameTesting(testClazz, test);
+    }
+
     public static void testingGeneral(Class<?> testFromObject, SomethingTest test) {
         for (Method method : testFromObject.getMethods()) {
             try {
