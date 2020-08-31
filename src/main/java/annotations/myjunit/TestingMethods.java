@@ -58,7 +58,8 @@ public class TestingMethods {
                     method.invoke(test);
                     System.out.println(method.getAnnotation(DisplayName.class).string());
                 }
-            } catch (Throwable ignored) {
+            } catch (Throwable e) {
+                e.printStackTrace();
             }
         }
     }
