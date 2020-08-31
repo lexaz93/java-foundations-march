@@ -13,6 +13,8 @@ public class SomethingTest {
     }
 
     @Test
+    @BeforeEach
+    @DisplayName(string = "Correct metod3")
     public void method3() {
 
     }
@@ -28,6 +30,7 @@ public class SomethingTest {
     }
 
     @Test
+    @DisplayName(string = " Correct metod6")
     public void method6() {
         throw new RuntimeException("method6");
     }
