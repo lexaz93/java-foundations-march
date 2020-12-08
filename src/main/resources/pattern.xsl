@@ -10,11 +10,11 @@
             <xsl:variable name="total" select="format-number(sum(//sum) div $count, '#.##')"/>          <!-- Среднее арифметическое перевода -->
             <xsl:for-each select="deposit/node">            <!-- Цикл по узлам -->
                 <xsl:sort select="@total_sum" order="descending"/>      <!-- Сортировка по убыванию -->
-                <xsl:variable name="i" select="position()"/>
+                <xsl:variable name="i" select="position()"/>            <!-- Индекс -->
                 <xsl:choose>        <!-- Аналогия if/else -->
-                    <xsl:when test="$i = 1">            <!-- Индекс последнего элемента -->
+                    <xsl:when test="$i = 1">            <!-- Индекс максимального элемента -->
                         <transaction lsc="{@lsc}" add_sum="{format-number(sum(//sum) - $total * ($count - 1), '#.##')}"
-                                     total_sum="{format-number(@total_sum + (sum(//sum) - $total * ($count - 1)), '#.##')}"/>
+                                     total_sum="{format-number(@total_sum + (sum(//sum) - $total * ($count - 1)), '#.##')}"/>           <!-- Вычитаем перебор из максимального баланса -->
                     </xsl:when>
                     <xsl:otherwise>     <!-- Индексы остальных -->
                         <transaction lsc="{@lsc}" add_sum="{$total}" total_sum="{format-number(@total_sum + $total, '#.##')}"/>
