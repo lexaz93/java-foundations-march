@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="pattern.xsl" ?>
+<root>
+
+    <pays>
+
+        <sum>15.48</sum>
+
+        <sum>19.24</sum>
+
+        <sum>48.01</sum>
+
+    </pays>
+
+    <deposit>
+
+        <node total_sum="147.01" lsc="1200"/>
+
+        <node total_sum="110.03" lsc="8841"/>
+
+        <node total_sum="255.04" lsc="9245"/>
+
+    </deposit>
+
+</root>
